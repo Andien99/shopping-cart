@@ -1,7 +1,7 @@
 import { test, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import HomePage from "../src/components/homepage/Homepage";
-import { href, MemoryRouter } from "react-router";
+import { MemoryRouter } from "react-router";
 
 test("displays the title", () => {
   render(

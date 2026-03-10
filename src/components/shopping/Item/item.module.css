@@ -1,3 +1,28 @@
 .item {
   border: 1px solid white;
+  border-radius: 1em;
+  max-width: 400px;
+  max-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 1em;
+}
+
+.quantityBtn {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.productImage {
+  max-width: 60%;
+  height: auto;
+  max-height: 250px;
+}
+
+.handlePurchase {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
