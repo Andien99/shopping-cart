@@ -1,22 +1,30 @@
 import { useState } from "react";
 import styles from "./item.module.css";
-const Item = ({ title, price, img, id }) => {
+const Item = ({ title, price, img, id, addToCart, cartData }) => {
   const [quantity, setQuantity] = useState(0);
-
+  const [disabled, setDisabled] = useState(false);
   const handleIncrement = () => {
+    if (quantity >= 0 && disabled) setDisabled(false);
     setQuantity((prev) => prev + 1);
   };
 
   const handleDecrement = () => {
-    if (quantity > 0) setQuantity((prev) => prev - 1);
+    if (disabled) return;
+    if (cartData.length > 0 && quantity == 1) {
+      for (let i = 0; i < cartData.length; i++) {
+        if (cartData[i].key === id) return setDisabled(true);
+      }
+    }
+    if (quantity > 0) return setQuantity((prev) => prev - 1);
   };
 
-  const handleCart = () => {
-    console.log("x" + quantity + " " + title + "has been added");
+  const handleCart = (title, price, img, quantity, id) => {
+    if (quantity == 0) return;
+    addToCart(title, price, img, quantity, id);
   };
 
   return (
-    <div className={styles.item} data-testid="item">
+    <div className={styles.item} data-testid="item" id={id} key={id}>
       <div className="productInfo">
         <h3>{title}</h3>
         <h4>${price}</h4>
@@ -24,7 +32,10 @@ const Item = ({ title, price, img, id }) => {
       </div>
       <div className={styles.handlePurchase}>
         <div className={styles.quantityBtn}>
-          <button className="decrement" onClick={handleDecrement}>
+          <button
+            className={disabled ? styles.decrementdisabled : styles.decrement}
+            onClick={handleDecrement}
+          >
             -
           </button>
           <p>{quantity}</p>
@@ -32,7 +43,9 @@ const Item = ({ title, price, img, id }) => {
             +
           </button>
         </div>
-        <button onClick={handleCart}>Add to cart</button>
+        <button onClick={() => handleCart(title, price, img, quantity, id)}>
+          Add to cart
+        </button>
       </div>
     </div>
   );

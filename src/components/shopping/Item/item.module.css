@@ -26,3 +26,8 @@
   flex-direction: column;
   gap: 1em;
 }
+
+.decrementdisabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

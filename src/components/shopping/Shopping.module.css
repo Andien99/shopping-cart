@@ -3,3 +3,23 @@
   grid-template: repeat(4, 1fr) / repeat(4, 1fr);
   gap: 1em;
 }
+
+.cartBtn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  gap: 0.5em;
+  background-color: rgb(49, 49, 207);
+  border-radius: 0.5em;
+  margin-bottom: 1em;
+  border: 1px solid white;
+}
+
+.cartBtn:hover {
+  background-color: rgb(25, 25, 219);
+}
+
+.cartLength {
+  color: white;
+}
