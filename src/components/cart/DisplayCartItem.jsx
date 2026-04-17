@@ -1,7 +1,7 @@
 import styles from "./DisplayCartItem.module.css";
 import { useState } from "react";
 import { useCart } from "./CartContext";
-const DisplayCartItem = ({ data }) => {
+const DisplayCartItem = ({ data, changeTotal }) => {
   const { cart, setCart } = useCart();
   const [disabled, setDisabled] = useState(false);
   const handleIncrement = () => {
@@ -19,12 +19,24 @@ const DisplayCartItem = ({ data }) => {
 
   const handleDecrement = () => {
     if (disabled) return;
-    if (cart.length > 0 && quantity == 1) {
+    if (cart.length > 0 && data.quantity == 1) {
       for (let i = 0; i < cart.length; i++) {
         if (cart[i].key === data.key) return setDisabled(true);
       }
     }
-    if (quantity > 0) return setQuantity((prev) => prev - 1);
+    setCart(
+      cart.map((item) => {
+        if (item.key === data.key) {
+          return { ...item, quantity: data.quantity - 1 };
+        } else {
+          return item;
+        }
+      }),
+    );
+  };
+
+  const handleRemoveItem = () => {
+    setCart(cart.filter((item) => item.key !== data.key));
   };
 
   return (
@@ -34,6 +46,9 @@ const DisplayCartItem = ({ data }) => {
         <h2 className={styles.itemTitle}>{data.title}</h2>
         <h1>$ {data.price}</h1>
         <h3>Subtotal: $ {data.price * data.quantity}</h3>
+        <button className={styles.removeBtn} onClick={handleRemoveItem}>
+          Remove
+        </button>
       </div>
       <div className={styles.quantityBtn}>
         <button

@@ -3,7 +3,6 @@ import Item from "./Item/Item";
 import fetchProduct from "../../hooks/fetchProduct";
 import styles from "./Shopping.module.css";
 import { Link } from "react-router";
-import { CartContext } from "../cart/CartContext";
 import { useCart } from "../cart/CartContext";
 
 const Shopping = () => {

@@ -1,0 +1,28 @@
+.cartContainer {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1em;
+}
+
+.cartItems {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.orderSummaryContainer {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+  padding: 1em;
+  margin-bottom: auto;
+}
+
+.orderSummaryContainer > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.returnBtn {
+  margin-top: 1em;
+}

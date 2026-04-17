@@ -49,3 +49,13 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.removeBtn {
+  background-color: red;
+  padding: 0.5em;
+}
+
+.removeBtn:hover {
+  background-color: rgb(194, 13, 13);
+  border-color: white;
+}
