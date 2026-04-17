@@ -47,7 +47,7 @@ const Item = ({ title, price, img, id, addToCart }) => {
           >
             -
           </button>
-          <p>{quantity}</p>
+          <p data-testid="quantity">{quantity}</p>
           <button className="increment" onClick={handleIncrement}>
             +
           </button>

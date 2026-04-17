@@ -10,7 +10,6 @@ const Shopping = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const { cart, setCart } = useCart();
-  useCart();
 
   useEffect(() => {
     async function connect() {

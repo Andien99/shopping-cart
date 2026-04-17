@@ -1,6 +1,7 @@
 import { test, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import Shopping from "../src/components/shopping/Shopping";
+import { CartProvider } from "../src/components/cart/CartContext";
 import { MemoryRouter } from "react-router";
 import { afterEach } from "vitest";
 
@@ -19,7 +20,9 @@ afterEach(() => {
 test("Shopping page runs and displays title", () => {
   render(
     <MemoryRouter>
-      <Shopping />
+      <CartProvider>
+        <Shopping />
+      </CartProvider>
     </MemoryRouter>,
   );
   const title = screen.getByText("Product list");
@@ -37,7 +40,9 @@ test("Shopping page displays 20 product items", async () => {
   );
   render(
     <MemoryRouter>
-      <Shopping />
+      <CartProvider>
+        <Shopping />
+      </CartProvider>
     </MemoryRouter>,
   );
 
@@ -56,7 +61,9 @@ test("Shopping page displays a loading state while fetching", () => {
   );
   render(
     <MemoryRouter>
-      <Shopping />
+      <CartProvider>
+        <Shopping />
+      </CartProvider>
     </MemoryRouter>,
   );
 
@@ -75,7 +82,9 @@ test("Shopping page displays an error state if fetch fails", async () => {
   );
   render(
     <MemoryRouter>
-      <Shopping />
+      <CartProvider>
+        <Shopping />
+      </CartProvider>
     </MemoryRouter>,
   );
 
@@ -94,7 +103,9 @@ test("Shopping page displays items after data loads", async () => {
   );
   render(
     <MemoryRouter>
-      <Shopping />
+      <CartProvider>
+        <Shopping />
+      </CartProvider>
     </MemoryRouter>,
   );
 
