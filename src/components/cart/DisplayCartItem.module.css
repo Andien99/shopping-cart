@@ -1,0 +1,51 @@
+.item {
+  border: 0.2px solid white;
+  max-width: 700px;
+  display: grid;
+  grid-template-columns: 150px 3fr 1fr;
+  padding: 0.5em 1em;
+  column-gap: 0.5em;
+}
+
+.quantityBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.itemImage {
+  object-fit: contain;
+  width: 150px;
+  height: 150px;
+}
+
+.itemTitle {
+  overflow: hidden;
+  align-self: start;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  align-self: center;
+  font-size: small;
+}
+
+.infoContainer > * {
+  margin: 0;
+  font-size: 16px;
+  text-align: start;
+}
+
+.handlePurchase {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.decrementdisabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

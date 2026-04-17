@@ -54,9 +54,6 @@ const Shopping = () => {
     } else {
       setCart([...cart, item]);
     }
-    // for (let i = 0; i < cart.length; i++) {
-    //   if(cart[i].key === item.key)
-    // }
   };
 
   useEffect(() => {
@@ -98,7 +95,6 @@ const Shopping = () => {
                 price={item.price}
                 img={item.image}
                 id={item.id}
-                cartData = {cart}
                 addToCart={addToCart}
               ></Item>
             ))}

@@ -1,8 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./item.module.css";
-const Item = ({ title, price, img, id, addToCart, cartData }) => {
+import { useCart } from "../../cart/CartContext";
+const Item = ({ title, price, img, id, addToCart }) => {
   const [quantity, setQuantity] = useState(0);
   const [disabled, setDisabled] = useState(false);
+  const { cart, setCart } = useCart();
+
+  useEffect(() => {
+    const itemIsInCart = cart.find((item) => item.key === id);
+    if (itemIsInCart === undefined) return;
+    setQuantity(itemIsInCart.quantity);
+  }, []);
+
   const handleIncrement = () => {
     if (quantity >= 0 && disabled) setDisabled(false);
     setQuantity((prev) => prev + 1);
@@ -10,9 +19,9 @@ const Item = ({ title, price, img, id, addToCart, cartData }) => {
 
   const handleDecrement = () => {
     if (disabled) return;
-    if (cartData.length > 0 && quantity == 1) {
-      for (let i = 0; i < cartData.length; i++) {
-        if (cartData[i].key === id) return setDisabled(true);
+    if (cart.length > 0 && quantity == 1) {
+      for (let i = 0; i < cart.length; i++) {
+        if (cart[i].key === id) return setDisabled(true);
       }
     }
     if (quantity > 0) return setQuantity((prev) => prev - 1);
